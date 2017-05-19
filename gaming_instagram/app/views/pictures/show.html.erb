@@ -6,6 +6,8 @@
     <img src="<%=aws_parser(@picture.image.url(:large))%>" />
     <div class="likes2"><%= @picture.likes %></div>
   </div>
+    <p><em>Game</em> - <%= @picture.game %></p>
+    <hr>
   <% @picture.comments.each do |comment| %>
   <% if @user.id == @current_user.id || @current_user.id == @user.comments[0].user_id %>
   <p><em><%= @user.username %></em> - <%= comment.content %> - </p><span class="deletecomment"><%= link_to 'Delete', comment, method: :delete %></span><br>

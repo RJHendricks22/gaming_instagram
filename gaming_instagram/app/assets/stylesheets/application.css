@@ -173,4 +173,10 @@ body{
 .searchpage h1{
   font-weight: 300;
 }
-
+.cameraimg {
+  width: 5vw;
+  display: inline-block;
+  position: absolute;
+  top: 9vh;
+  right: 25vw;
+}

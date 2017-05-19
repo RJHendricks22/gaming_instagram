@@ -1,6 +1,7 @@
 <%= render 'layouts/header' %>
 <div class="feed">
   <h1>Welcome <%= @user.username %></h1>
+  <a href="/<%= @user.username %>"><img class="cameraimg" src="https://lh6.ggpht.com/2jtlQAC-KQ58_tRBu0UjT6U-8ePmGls-SDi9q8MdHm8VQajlctnR5PhacFw-403j6jw=w300" /></a>
   <%= render 'stats' %>
 </div>
 <% @fol.each do |x, index| %>

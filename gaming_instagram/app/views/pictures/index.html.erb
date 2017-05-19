@@ -48,6 +48,7 @@
   <div class="feedpost">
     <a class="feedpic" href="/<%= @user.username %>/<%= pic.id %>"><img src="<%=aws_parser(pic.image.url(:large))%>" /></a>
     <div class="likes2"><%= pic.likes %></div>
+    <p><em>Game</em> - <%= pic.game %></p>
     <p><em><%= @user.username %> </em> - <%= pic.caption %></p>
   </div>
   <% end %>
