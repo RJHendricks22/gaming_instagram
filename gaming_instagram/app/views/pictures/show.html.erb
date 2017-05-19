@@ -1,0 +1,27 @@
+<%= render 'layouts/header' %>
+
+<div class="feed">
+  <div class="feedpost">
+  <div class="feedpic">
+    <img src="<%=aws_parser(@picture.image.url(:large))%>" />
+    <div class="likes2"><%= @picture.likes %></div>
+  </div>
+  <% @picture.comments.each do |comment| %>
+  <% if @user.id == @current_user.id || @current_user.id == @user.comments[0].user_id %>
+  <p><em><%= @user.username %></em> - <%= comment.content %> - </p><span class="deletecomment"><%= link_to 'Delete', comment, method: :delete %></span><br>
+  <% else %>
+    <p><em><a href="/<%=@user.username%>" style="text-decoration:none;"><%= @user.username %></a></em> - <%= comment.content %></p>
+  <% end %>
+    <hr>
+  <% end %>
+  <form action="/comments" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <label>Add a comment</label>
+    <br>
+    <textarea name="content" type="text"></textarea><br>
+    <input name="picture_id" type="hidden" value="<%= @picture.id %>">
+    <input name="user_id" type="hidden" value="<%= @user.id %>">
+    <button>Submit</button>
+  </form>
+    </div>
+</div>

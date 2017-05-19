@@ -3,12 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .stats {
+  margin-left: 16vw;
+  width: 30vw;
   overflow: auto;
   margin-top: 0;
   padding: 0;
   a {
-    float: left;
+    text-decoration: none;
+    width: 10vw;
+    height: 4vw;
+    display: inline-block;
     padding: 0 10px;
+    line-height: 4vw;
     border-left: 1px solid lightgray;
     color: gray;
     &:first-child {
@@ -22,17 +28,6 @@
   }
   strong {
     display: block;
-  }
-}
-
-.user_avatars {
-  overflow: auto;
-  margin-top: 10px;
-  .gravatar {
-    margin: 1px 1px;
-  }
-  a {
-    padding: 0;
   }
 }
 

@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   end
   resources :pictures,          only: [:create, :destroy]
   resources :relationships,     only: [:create, :destroy]
-  resources :microposts,         only: [:create]
   resources :comments
   
   devise_scope :user do
@@ -18,4 +17,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   get "/", to: "home#index"
+  get "/search", to: "home#search"
+  get "/users/:id/followers", to: "users#followers"
+  get "/:username", to: "pictures#index"
+  get "/:username/:pic_id", to: "pictures#show"
+  
 end

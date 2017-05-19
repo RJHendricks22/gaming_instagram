@@ -1,0 +1,55 @@
+<%= render 'layouts/header' %>
+<div class="feed">
+
+<% if @current_user.id == @user.id %>
+  <h1>Welcome, <%= @user.username %>!</h1>
+  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
+  <h3>Upload picture:</h3>
+  <%= form_for(@picture, multipart: true, method: "post", url: ('/pictures')) do |f| %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div class="field">
+      <%= f.label :caption %>
+      <%= f.text_field :caption %>
+    </div>
+    <div class="field">
+      <%= f.label :game %>
+      <%= f.text_field :game %>
+    </div>
+    <div class="field">
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field  :user_id, :value => @current_user.id %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field  :likes, :value => rand(0..10) %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit 'Upload!' %>
+
+  </div>
+  <% end %>
+
+
+
+<% else %>
+  <h1>You are on <%= @user.username%>'s Page</h1>
+  <%= render 'users/follow_form' %>
+<% end %>
+
+<br>
+  
+<% if @pictures[0] == nil %>
+  <%= "#{@user.username} has no pictures!" %>
+<% else %>
+  <% @pictures.each do |pic| %>
+  <div class="feedpost">
+    <a class="feedpic" href="/<%= @user.username %>/<%= pic.id %>"><img src="<%=aws_parser(pic.image.url(:large))%>" /></a>
+    <div class="likes2"><%= pic.likes %></div>
+    <p><em><%= @user.username %> </em> - <%= pic.caption %></p>
+  </div>
+  <% end %>
+<% end %>
+  </div>

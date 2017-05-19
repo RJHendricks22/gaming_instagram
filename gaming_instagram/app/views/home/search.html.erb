@@ -1,0 +1,17 @@
+<%= render 'layouts/header' %>
+<div class="searchpage">
+<h1> Search for other Users </h1>
+<%= search_form_for @search, url: ('/search')  do |f| %>
+  
+  <%= f.search_field :username_cont %>
+  <%= f.submit "Search"%>
+<% end %>
+
+<ul class="searchul">
+
+<% @user_list.each do |username| %>
+
+  <li><a href="/<%=username.username%>"><%= username.username %></a></li>
+
+<% end %>
+  </div>

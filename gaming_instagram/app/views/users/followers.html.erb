@@ -1,0 +1,13 @@
+<%= render 'layouts/header' %>
+<div class="searchpage">
+  <h1> Followers: </h1>
+  <ul>
+<% if @followers[0] == nil %>
+  <%= "You have no followers!" %>
+<% else %>
+  <% @followers.each do |x| %>
+    <li><a href="/<%= x.username %>"><%= x.username %></a></li>
+  <% end %>
+<% end %>
+    </ul>
+</div>

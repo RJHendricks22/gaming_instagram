@@ -1,5 +1,16 @@
-
-
-<h1><%= @user %></h1>
-
-<h3><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></h3>
+<%= render 'layouts/header' %>
+<div class="feed">
+  <h1>Welcome <%= @user.username %></h1>
+  <%= render 'stats' %>
+</div>
+<% @fol.each do |x, index| %>
+  <div class="feedpost">
+    <a href="/<%=x.user.username%>" class="feeduser"><h2><%= x.user.username %></h2></a>
+    <p><em>Game: </em><%= x.game %> </p>
+    <div class="likes"> <%=x.likes %> </div>
+    <a class="feedpic" href="/<%=x.user.username%>/<%=x.id%>"><img src="<%=  aws_parser(x.image.url(:large)) %>" /></a>
+    <p><%= x.caption %></p>
+    
+  </div>
+<% end %>
+</div>
