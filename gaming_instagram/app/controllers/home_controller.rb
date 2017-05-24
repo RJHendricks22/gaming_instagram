@@ -5,7 +5,7 @@ class HomeController < ApplicationController
       
       @user = current_user
       @picture = Picture.find_by(user_id: @user.id) ? Picture.find_by(user_id: @user.id).source : ""
-      @fol = Picture.where(user_id: @user.following_ids)
+      @fol = Picture.where(user_id: @user.following_ids).order('id DESC')
     else
       redirect_to "/users/sign_in"
     end

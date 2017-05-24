@@ -4,7 +4,7 @@ class PicturesController < ApplicationController
     if user_signed_in?
       @current_user = current_user
       @user = User.find_by(username: params[:username])
-      @pictures = Picture.where(user_id: @user.id)
+      @pictures = Picture.where(user_id: @user.id).order('id DESC')
       @picture = Picture.new
       @aws
       if @user.id == @current_user.id
