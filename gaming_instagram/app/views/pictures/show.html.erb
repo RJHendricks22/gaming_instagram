@@ -10,7 +10,7 @@
     <hr>
   <% @picture.comments.each do |comment| %>
   <% if @user.id == current_user.id || current_user.id == comment.user_id %>
-  <p><em><%= current_user.username %></em> - <%= comment.content %>  </p><span class="deletecomment"><%= link_to 'Delete', comment, method: :delete %></span><br>
+    <p><em><a href="/<%=comment.user.username%>" style="text-decoration:none;"><%= comment.user.username %></a></em> - <%= comment.content %>  </p><span class="deletecomment"><%= link_to 'Delete', comment, method: :delete %></span><br>
   <% else %>
     <p><em><a href="/<%=comment.user.username%>" style="text-decoration:none;"><%= comment.user.username %></a></em> - <%= comment.content %></p>
   <% end %>
