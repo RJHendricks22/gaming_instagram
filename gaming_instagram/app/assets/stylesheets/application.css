@@ -123,6 +123,7 @@ body{
   background-color: rgba(0,0,0,.7);
   font-family: 'Lato', sans-serif;
   text-align: center;
+  padding-bottom: .2vh;
 }
 .likes2 {
   position: absolute;
