@@ -9,8 +9,8 @@
     <p><em>Game</em> - <%= @picture.game %></p>
     <hr>
   <% @picture.comments.each do |comment| %>
-  <% if @user.id == @current_user.id || @current_user.id == @user.comments[0].user_id %>
-  <p><em><%= @user.username %></em> - <%= comment.content %> - </p><span class="deletecomment"><%= link_to 'Delete', comment, method: :delete %></span><br>
+  <% if @user.id == current_user.id || current_user.id == comment.user_id %>
+  <p><em><%= current_user.username %></em> - <%= comment.content %>  </p><span class="deletecomment"><%= link_to 'Delete', comment, method: :delete %></span><br>
   <% else %>
     <p><em><a href="/<%=comment.user.username%>" style="text-decoration:none;"><%= comment.user.username %></a></em> - <%= comment.content %></p>
   <% end %>
@@ -22,7 +22,7 @@
     <br>
     <textarea name="content" type="text"></textarea><br>
     <input name="picture_id" type="hidden" value="<%= @picture.id %>">
-    <input name="user_id" type="hidden" value="<%= @current_user.id %>">
+    <input name="user_id" type="hidden" value="<%= current_user.id %>">
     <button>Submit</button>
   </form>
     </div>
